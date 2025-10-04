@@ -1,13 +1,9 @@
-// ignore_for_file: unused_field
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-/// Change this to your running API:
-/// - For FastAPI: 'http://10.0.2.2:8000/products'
-/// - For json-server: 'http://10.0.2.2:3000/products'
 final String baseUrl = kIsWeb
     ? 'http://localhost:3000/products'
     : 'http://10.0.2.2:3000/products';
@@ -134,9 +130,10 @@ class _AssignmentWeek5State extends State<AssignmentWeek5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 213, 247, 255),
       appBar: AppBar(
         title: const Text('Product'),
-        backgroundColor: Colors.amber,
+        backgroundColor: const Color.fromARGB(255, 65, 166, 197),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _openForm(),
@@ -158,6 +155,7 @@ class _AssignmentWeek5State extends State<AssignmentWeek5> {
                       ? (p['price'] as num).toDouble()
                       : double.tryParse('${p['price']}') ?? 0;
                   return ListTile(
+                    
                     leading: Text(
                       '${index + 1}',
                       style: Theme.of(context).textTheme.bodyMedium,
@@ -169,7 +167,7 @@ class _AssignmentWeek5State extends State<AssignmentWeek5> {
                     subtitle: desc.isEmpty
                         ? null
                         : Text(desc, style: const TextStyle(fontSize: 12)),
-                    // เพิ่มปุ่มลบชัด ๆ ที่ท้ายแถว
+                    
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -177,10 +175,11 @@ class _AssignmentWeek5State extends State<AssignmentWeek5> {
                           price.toStringAsFixed(0),
                           style: TextStyle(
                             color: Colors.green.shade700,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 13.5,
                           ),
                         ),
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 10),
                         IconButton(
                           tooltip: 'แก้ไข',
                           icon: const Icon(Icons.edit_outlined),
